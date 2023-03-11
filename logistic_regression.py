@@ -144,3 +144,14 @@ def predict(X, w, b):
     g = np.dot(X, w) + b
     f_wb = np.where(g >= 0.5, 1.0, 0.0)
     return f_wb, g
+
+
+def maping(X, degree):
+    m, n = X.shape
+    X_maped = X
+    for j in range(1, degree + 1):
+        for i in range(n):
+            new_column = np.power(X_maped[:, i], j)
+            new_column = new_column.reshape(m, 1)
+            X_maped = np.append(X_maped, new_column, axis=1)
+        return X_maped
