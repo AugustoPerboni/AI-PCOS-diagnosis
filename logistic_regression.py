@@ -17,7 +17,7 @@ def sigmoid(z):
     return g
 
 
-def compute_cost(X, y, w, b, *argv):
+def compute_cost_reg(X, y, w, b, lambda_, *argv):
     """
     Computes the cost over all examples
     Args:
@@ -25,6 +25,7 @@ def compute_cost(X, y, w, b, *argv):
       y : (ndarray Shape (m,))  target value 
       w : (ndarray Shape (n,))  values of parameters of the model      
       b : (scalar)              value of bias parameter of the model
+      lambda_ : (scalar,float)  regularization constant
       *argv : unused, for compatibility with regularized version below
     Returns:
       total_cost : (scalar) cost 
@@ -32,13 +33,19 @@ def compute_cost(X, y, w, b, *argv):
 
     m, n = X.shape
     z = np.dot(X, w) + b
+
+    # Prevent zeros and infinitis
     f_wb = sigmoid(z)
+    epsilon = 1e-8
+    f_wb = np.clip(f_wb, epsilon, 1-epsilon)
+
     total_cost = np.sum(-y * np.log(f_wb) - (1 - y) * np.log(1-f_wb))/m
+    total_cost += np.sum(np.power(w, 2))*(lambda_/(2*m))
 
     return total_cost
 
 
-def compute_gradient(X, y, w, b, *argv):
+def compute_gradient_reg(X, y, w, b, lambda_, *argv):
     """
     Computes the gradient for logistic regression 
 
@@ -47,6 +54,7 @@ def compute_gradient(X, y, w, b, *argv):
       y : (ndarray Shape (m,))  target value 
       w : (ndarray Shape (n,))  values of parameters of the model      
       b : (scalar)              value of bias parameter of the model
+      lambda_ : (scalar,float)  regularization constant
       *argv : unused, for compatibility with regularized version 
       dj_dw : (ndarray Shape (n,)) The gradient of the cost w.r.t. the parameters w. 
       dj_db : (scalar)             The gradient of the cost w.r.t. the parameter b. 
@@ -63,11 +71,12 @@ def compute_gradient(X, y, w, b, *argv):
         dj_dw[i] = np.sum(err * X[:, i])/m
 
     dj_db = np.sum(err)/m
+    dj_dw += (w*(lambda_ / m))
 
     return dj_db, dj_dw
 
 
-def gradient_descent(X, y, w_in, b_in, alpha, num_iters):
+def gradient_descent_reg(X, y, w_in, b_in, alpha, num_iters, lambda_):
     """
     Performs batch gradient descent to learn theta. Updates theta by taking 
     num_iters gradient steps with learning rate alpha
@@ -99,7 +108,7 @@ def gradient_descent(X, y, w_in, b_in, alpha, num_iters):
     for i in range(num_iters):
 
         # Calculate the gradient and update the parameters
-        dj_db, dj_dw = compute_gradient(X, y, w_in, b_in)
+        dj_db, dj_dw = compute_gradient_reg(X, y, w_in, b_in, lambda_)
 
         # Update Parameters using w, b, alpha and gradient
         w_in = w_in - alpha * dj_dw
@@ -107,7 +116,7 @@ def gradient_descent(X, y, w_in, b_in, alpha, num_iters):
 
         # Save cost J at each iteration
         if i < 100000:      # prevent resource exhaustion
-            cost = compute_cost(X, y, w_in, b_in)
+            cost = compute_cost_reg(X, y, w_in, b_in, lambda_)
             J_history.append(cost)
 
         # Print cost every at intervals 10 times or as many iterations if < 10
@@ -133,5 +142,5 @@ def predict(X, w, b):
     '''
 
     g = np.dot(X, w) + b
-    f_wb = np.where(g >= 0.5, 1, 0)
+    f_wb = np.where(g >= 0.5, 1.0, 0.0)
     return f_wb, g
