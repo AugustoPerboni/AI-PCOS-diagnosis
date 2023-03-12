@@ -1,23 +1,22 @@
 # Polycystic Ovary Syndrome (PCOS) diagnosis prediction
 
-Polycystic ovary syndrome **(PCOS)** is a disorder involving infrequent, irregular or prolonged menstrual periods, and often excess male hormone (androgen) levels. The ovaries develop numerous small collections of fluid — called follicles — and may fail to regularly release eggs
+Polycystic ovary syndrome (PCOS) is a disorder involving infrequent, irregular, or prolonged menstrual periods, and often excess male hormone (androgen) levels. The ovaries develop numerous small collections of fluid — called follicles — and may fail to regularly release eggs.
 
 <p align="center">
   <img width="460" height="300" src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2016/8/Polycystic_ovary_syndrome_shutterstock_91160414.jpg">
 </p>
 
-In order to predict if a patient have Polycystic Ovary Syndrome three **logistic regression** models were developed using physical and clinical [data](https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos) collected from 10 different hospital across Kerala,India. All the code is avaible in the jupyter notebook file in this repository. 
-
+To predict if a patient has Polycystic Ovary Syndrome three logistic regression models were developed using physical and clinical [data](https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos) collected from 10 different hospitals across Kerala, India. All the code is available in the jupyter notebook file in this repository.
 
 ## Models
 * **First:**
 All the features were used as parameters only with linear relations.
 
 * **Second:**
-A study of the data were made and part of it was taked off because it has minimum influence in the outcome, but keeping only linear relations
-
+ A study of the data was made and part of it was taken off because it has minimum influence on the outcome, but keeping only linear relations
+ 
 * **Third:**
-Starting from the second model data selection features were created using the polynomial form in order to better shape non-linear patterns.
+Starting from the second model data selection features were created using the polynomial form to better shape non-linear patterns.
 
 
 Obs: **Z-score normalization** was used in all models
