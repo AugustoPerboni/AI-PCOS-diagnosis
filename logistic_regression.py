@@ -147,11 +147,21 @@ def predict(X, w, b):
 
 
 def maping(X, degree):
+    '''
+    Create a polynomial as the following for every feature: x + x^2 + x^3 ...x^(degree)
+
+    Args:
+    X : ndarray Shape(m, n) data, m examples by n features
+    degree: (int) maximum degree of each polynomial
+    Output:
+    X_maped_ ndarray(m, n * 4) X matrix with the new powers of x coefficient added
+
+    '''
     m, n = X.shape
     X_maped = X
-    for j in range(1, degree + 1):
+    for j in range(2, degree + 1):
         for i in range(n):
             new_column = np.power(X_maped[:, i], j)
             new_column = new_column.reshape(m, 1)
             X_maped = np.append(X_maped, new_column, axis=1)
-        return X_maped
+    return X_maped
