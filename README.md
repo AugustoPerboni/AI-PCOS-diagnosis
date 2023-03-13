@@ -21,7 +21,7 @@ Starting from the second model data selection features were created using the po
 
 Obs: **Z-score normalization** was used in all models
 
-## Conclusion
+## Results
 To evaluate the results three values were calculated:
 - **1 Acuraccy**: ${ right_{predictions} / total_{predictions}}$
 - **Positive predictive value (PPV)**: Probability that a patient with a positive (abnormal) test result actually has the disease
@@ -45,10 +45,10 @@ To evaluate the results three values were calculated:
 
 
 ### Data source:
-- author = Prasoon Kottarathil,
-- title = Polycystic ovary syndrome (PCOS),
-- year = 2020,
-- publisher = kaggle,
-- journal = Kaggle Dataset,
+- Data research author = Prasoon Kottarathil,
+- Title = Polycystic ovary syndrome (PCOS),
+- Year = 2020,
+- Publisher = kaggle,
+- Journal = Kaggle Dataset,
 
 
