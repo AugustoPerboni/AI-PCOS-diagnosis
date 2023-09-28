@@ -1,54 +1,51 @@
-# Polycystic Ovary Syndrome (PCOS) diagnosis prediction
+# 🌺 Polycystic Ovary Syndrome (PCOS) Diagnosis Prediction
 
-Polycystic ovary syndrome (PCOS) is a disorder involving infrequent, irregular, or prolonged menstrual periods, and often excess male hormone (androgen) levels. The ovaries develop numerous small collections of fluid — called follicles — and may fail to regularly release eggs.
+Polycystic ovary syndrome (PCOS) is a medical condition characterized by infrequent, irregular, or prolonged menstrual cycles, often accompanied by elevated male hormone (androgen) levels. This disorder leads the ovaries to develop numerous tiny fluid-filled sacs — known as follicles — impairing the regular release of eggs.
 
 <p align="center">
   <img width="460" height="300" src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2016/8/Polycystic_ovary_syndrome_shutterstock_91160414.jpg">
 </p>
 
-To predict if a patient has Polycystic Ovary Syndrome three logistic regression models were developed using physical and clinical [data](https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos) collected from 10 different hospitals across Kerala, India. All the code is available in the jupyter notebook file in this repository.
+🔍 **Prediction Methodology:** To determine the likelihood of a patient having PCOS, we developed three logistic regression models. These models are based on physical and clinical [data](https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos) sourced from 10 distinct hospitals across Kerala, India. The entire code is accessible in the Jupyter notebook within this repository.
 
-## Models
-* **First:**
-All the features were used as parameters only with linear relations.
+## 📊 Models Overview:
 
-* **Second:**
- A study of the data was made and part of it was taken off because it has minimum influence on the outcome, but keeping only linear relations
- 
-* **Third:**
-Starting from the second model data selection features were created using the polynomial form to better shape non-linear patterns.
+* **First 📈:**
+  - Linear relationships utilizing all feature parameters.
+  
+* **Second 📉:**
+  - Linear relationships retained but with selected features for more influence on the prediction outcome.
+  
+* **Third 🧬:**
+  - Evolving from the second model, introduced polynomial features to better identify non-linear patterns.
 
+📌 **Note:** All models have been subjected to Z-score normalization for optimum performance.
 
-Obs: **Z-score normalization** was used in all models
+## 🔢 Results:
+Evaluation metrics:
 
-## Results
-To evaluate the results three values were calculated:
-- **1 Acuraccy**: ${ right_{predictions} / total_{predictions}}$
-- **Positive predictive value (PPV)**: Probability that a patient with a positive (abnormal) test result actually has the disease
-- **Negative predictive value (NVP)**: Probability that a patient who has a negative test result indeed does not have the disease
+- **Accuracy 🎯:** ${\frac{right_{predictions}}{total_{predictions}}}$
+- **PPV (Positive Predictive Value) ✅:** Likelihood that patients with positive tests truly have the disease.
+- **NPV (Negative Predictive Value) ❌:** Likelihood that patients with negative tests genuinely don't have the disease.
 
-
-**First model**
+**First Model Metrics:**
 * Accuracy = 84.0%
-* PVP      = 87.2%
-* NVP      = 82.6%
+* PPV      = 87.2%
+* NPV      = 82.6%
 
-**Second model**
+**Second Model Metrics:**
 * Accuracy = 88.9%
-* PVP      = 95.5%
-* NVP      = 86.4%
+* PPV      = 95.5%
+* NPV      = 86.4%
 
-**Third model**
+**Third Model Metrics:**
 * Accuracy = 84.0%
-* PVP      = 97.1%
-* NVP      = 80.5%
+* PPV      = 97.1%
+* NPV      = 80.5%
 
-
-### Data source:
-- Data research author = Prasoon Kottarathil,
-- Title = Polycystic ovary syndrome (PCOS),
-- Year = 2020,
-- Publisher = kaggle,
-- Journal = Kaggle Dataset,
-
-
+### 📜 Data Source Credits:
+- **Author:** Prasoon Kottarathil
+- **Title:** Polycystic ovary syndrome (PCOS)
+- **Year:** 2020
+- **Publisher:** Kaggle
+- **Journal:** Kaggle Dataset
